@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-"I will be a great devops" 
-=======
 merge-01 in Feature branch
->>>>>>> feature-branch
+hooks
+01
