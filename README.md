@@ -4,6 +4,6 @@
  - Line 3
 
 ```
-git clone <>
+git clone https://github.com/yehudasho/gm_training.git
 ```
 
