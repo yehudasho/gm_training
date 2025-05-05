@@ -1,4 +1,4 @@
-### Git hook 
+## Git hook example 
 
 - Hooks live in the .git/hooks/ directory of every Git repository.
 When you initialize a repo, Git puts sample scripts there (e.g., commit-msg).
