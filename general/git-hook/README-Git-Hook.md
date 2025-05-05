@@ -32,11 +32,19 @@ fi
 echo "✅ Commit message contains a valid JIRA ID."
 ```
 
-vi index.html
-git add index.html
-git commit -m "JIRA-123"    		# you should get a message Commit message contains a valid JIRA ID
+- vi index.html
+- git add index.html
+- git commit -m "fix typo bug-123"              
 
-vi index.html
-git add index.html
-git commit -m "new commit"              # you should get an error
+- You should get an error message
+
+![Alt text](pic-gh-error-hook.png) 
+
+- vi index.html
+- git add index.html
+- git commit -m "JIRA-123 fix typo bug-123"    		
+
+- You should get a success message Commit message contains a valid JIRA ID
+
+![Alt text](pic-gh-success-hook.png) 
 
