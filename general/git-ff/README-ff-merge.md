@@ -61,3 +61,85 @@ gitk
   
 ![Alt text](pic-gh-no-ff-merge.png) 
 
+
+### Git Rebase
+
+- Create two commits in the main branch
+- Create and checkout a new branch (branch-rebase-demo)
+- Create one commits in the branch-rebase-demo branch
+- rebase the branch-rebase-demo branch into the main branch
+
+```
+git checkout main
+echo "line 01" > rebase-demo.txt		# Pay attantion its not append mode, otherway you will get conflict 
+git add rebase-demo.txt
+git commit -m "main line-01"
+echo "line 02" >> rebase-demo.txt
+git commit -am "main line-02"
+git log --oneline rebase-demo.txt
+gitk
+
+git checkout -b branch-rebase-demo
+echo "line 03" >> rebase-demo.txt
+git add rebase-demo.txt
+git commit -am "branch-rebase-demo line-03"
+git log --oneline rebase-file.txt
+gitk
+
+git checkout main
+git rebase branch-rebase-demo
+git log --oneline rebase-file.txt
+gitk
+
+	##### END #############
+```
+- output
+
+![Alt text](pic-gh-rebase.png) 
+
+
+
+## Git Rebase interactive
+
+- Add base commit on main
+- Create rebase-interactive branch
+- Add two commits to squash later
+- Show log before squash
+- Interactive rebase (squash last 2)
+- Show log after squash
+- Rebase branch-rebase-interactive branch into main
+  
+```
+echo "line 01" >> rebase-interactive.txt
+cat rebase-interactive.txt
+git add rebase-interactive.txt
+git commit -m "main line-01"
+
+git checkout -b branch-rebase-interactive
+echo "line 02" >> rebase-interactive.txt
+git commit -am "brach-rebase-interactive line-02"
+cat rebase-interactive.txt
+echo "line 03" >> rebase-interactive.txt
+git commit -am "brach-rebase-interactive line-03"
+git log --oneline rebase-interactive.txt
+gitk
+
+		# Interactive rebase (squash last 2)
+git rebase -i HEAD~2
+		# Log after squash
+cat rebase-interactive.txt
+git log --oneline rebase-interactive.txt
+gitk
+		# from main
+git checkout -
+cat rebase-interactive.txt
+git log --oneline rebase-interactive.txt
+
+	# Rebase branch-rebase-interactive branch into main
+git rebase branch-rebase-interactive
+git log --oneline rebase-interactive.txt
+cat rebase-interactive.txt
+
+```
+
+
