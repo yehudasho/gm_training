@@ -93,9 +93,7 @@ gitk
 
 	##### END #############
 ```
-- output
 
-![Alt text](pic-gh-rebase.png) 
 
 
 
