@@ -24,4 +24,5 @@ ansible all -m shell -a "hostname"
 ansible all -m shell -a "uname"
 ansible all -m shell -a "cat /etc/os-release"
 ansible all -m shell -a "apt install -y ncdu"
+ansible demoservers -m shell -a "sudo service apache2 status"
 ```
