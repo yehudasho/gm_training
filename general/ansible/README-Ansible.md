@@ -151,8 +151,8 @@ tee playbooks/flaskapp-with-role/tasks/main.yml > /dev/null <<EOF
   file:
     path: "{{ app_dir }}"
     state: directory
-    owner: test
-    group: test
+    owner: sela
+    group: sela
     mode: '0755'
 
 - name: Copy Hello World app
@@ -168,8 +168,8 @@ tee playbooks/flaskapp-with-role/tasks/main.yml > /dev/null <<EOF
 
       if __name__ == "__main__":
           app.run(host='0.0.0.0', port=5011)
-    owner: test
-    group: test
+    owner: sela
+    group: sela
     mode: '0755'
 
 - name: Run the Flask app in the background
@@ -186,7 +186,7 @@ EOF
 ```
 tee playbooks/flaskapp-with-role/defaults/main.yml > /dev/null <<EOF
 ---
-app_dir: /home/test/playbooks/flaskapp-with-role
+app_dir: /home/sela/playbooks/flaskapp-with-role
 EOF
 ```
 
@@ -202,7 +202,7 @@ EOF
 - name: Deploy Flask App
   hosts: demoservers
   become: yes
-  remote_user: test
+  remote_user: sela
   vars:
     ansible_python_interpreter: /usr/bin/python3
   roles:
