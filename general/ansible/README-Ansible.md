@@ -46,9 +46,9 @@ tee flaskapp-without-role-playbook.yml > /dev/null <<EOF
 - name: Deploy Flask Hello World App
   hosts: demoservers
   become: yes
-  remote_user: test
+  remote_user: sela
   vars:
-    app_dir: /home/test/playbooks/flaskapp
+    app_dir: /home/sela/playbooks/flaskapp
     ansible_python_interpreter: /usr/bin/python3
 
   tasks:
@@ -69,8 +69,8 @@ tee flaskapp-without-role-playbook.yml > /dev/null <<EOF
       file:
         path: "{{ app_dir }}"
         state: directory
-        owner: test
-        group: test
+        owner: sela
+        group: sela
         mode: '0755'
 
     - name: Copy Flask App is running without role 
@@ -86,8 +86,8 @@ tee flaskapp-without-role-playbook.yml > /dev/null <<EOF
 
           if __name__ == "__main__":
               app.run(host='0.0.0.0', port=5010)
-        owner: test
-        group: test
+        owner: sela
+        group: sela
         mode: '0755'
 
     - name: Run the Flask app in the background
