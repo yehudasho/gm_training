@@ -107,3 +107,127 @@ ansible-playbook flaskapp-without-role-playbook.yml
 
 - Browse to the flask app with the correct port
   - http://(IP-WORKER):5010
+ 
+
+## Run flask app python  with roles
+
+
+
+```
+ansible-galaxy init flaskapp-with-role
+```
+  - output of three
+```
+flaskapp-with-role/
+├── defaults/
+├── files/
+├── handlers/
+├── meta/
+├── tasks/
+│   └── main.yml         # ← This is where your content goes
+├── templates/
+├── tests/
+└── vars/
+```
+
+  - Create flask app python with diffrent port in playbooks ->flaskapp-with-role -> tasks -> main.yml
+```
+tee playbooks/flaskapp-with-role/tasks/main.yml > /dev/null <<EOF
+---
+- name: Ensure Python3 and pip are installed
+  apt:
+    name:
+      - python3
+      - python3-pip
+    update_cache: yes
+    state: present
+
+- name: Install Flask using pip3
+  pip:
+    name: flask
+    executable: pip3
+
+- name: Create application directory
+  file:
+    path: "{{ app_dir }}"
+    state: directory
+    owner: test
+    group: test
+    mode: '0755'
+
+- name: Copy Hello World app
+  copy:
+    dest: "{{ app_dir }}/app.py"
+    content: |
+      from flask import Flask
+      app = Flask(__name__)
+
+      @app.route('/')
+      def hello():
+          return "Hello World from Flask with the roles!!!"
+
+      if __name__ == "__main__":
+          app.run(host='0.0.0.0', port=5011)
+    owner: test
+    group: test
+    mode: '0755'
+
+- name: Run the Flask app in the background
+  shell: nohup python3 {{ app_dir }}/app.py &> {{ app_dir }}/flask.log &
+  args:
+    chdir: "{{ app_dir }}"
+  async: 0
+  poll: 0
+EOF
+```
+
+  - Create Variable in playbooks ->flaskapp-with-role -> defaults -> main.yml
+
+```
+tee playbooks/flaskapp-with-role/defaults/main.yml > /dev/null <<EOF
+---
+app_dir: /home/test/playbooks/flaskapp-with-role
+EOF
+```
+
+
+- Create the playbook flaskapp-role-playbook.yml file
+- Execute the playbook
+- Browse to the flask app
+  - **Note** -  app_dir var is as global variable
+
+```
+  - Create playbook flaskapp-with-role  
+---
+- name: Deploy Flask App
+  hosts: demoservers
+  become: yes
+  remote_user: test
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  roles:
+    - flaskapp-with-role
+```
+
+
+  - Execute the playbook
+```
+ansible-playbook flaskapp-role-playbook.yml --syntax-check
+ansible-playbook flaskapp-role-playbook.yml
+```
+
+- Browse to the flask app with the correct port
+  - http://(IP-WORKER):5011
+    
+```
+# run it in order to get the Public IP of worker and add it to the browser
+# for example  http://<output curl ifconfig.me>:5011/
+curl ifconfig.me
+```
+
+### Cleanup - kill the py process
+
+```
+ansible worker -m shell -a "pkill -f py" -b
+```
+
