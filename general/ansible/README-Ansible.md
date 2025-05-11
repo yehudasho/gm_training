@@ -11,3 +11,17 @@ sela@master:~$ ssh sela@34.38.112.12
 sudo hostnamectl set-hostname master
 sudo hostnamectl set-hostname worker
 ```
+
+
+# Modules
+
+```
+ansible all -m user -a "name=<You Should type the correct uset !!! > state=present"
+ansible all -m user -a "name=testuser state=present"
+ansible all -m shell -a "echo $HOME"
+ansible all -m file -a "path=/tmp/ state=directory"
+ansible all -m shell -a "hostname"
+ansible all -m shell -a "uname"
+ansible all -m shell -a "cat /etc/os-release"
+ansible all -m shell -a "apt install -y ncdu"
+```
