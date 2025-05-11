@@ -231,3 +231,9 @@ curl ifconfig.me
 ansible worker -m shell -a "pkill -f py" -b
 ```
 
+
+## Ansible Variables
+
+```
+https://gitlab.com/ansible-workshop/labs/lab06
+```
