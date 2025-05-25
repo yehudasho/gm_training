@@ -30,4 +30,7 @@ kubectl get svc​
 kubectl describe svc nginx​
 kubectl get namespaces​
 kubectl config set-context --current --namespace=<>
+kubectl cluster-info
+kubectl config get-contexts
+kubectl config get-contexts | awk '{print $1,$5}'
 ```
