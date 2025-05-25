@@ -3,8 +3,11 @@ https://gitlab.com/sela-kubernetes-workshop/lab-01
 
 ## Extra lab - pod + rs + svc
 
+- Run on one shot the my-pod-rs-svc.yaml file
+```
 kubectl apply -f my-pod-rs-svc.yaml
 kubectl port-forward svc/example-service 8080:80
+```
 ## K8s Common commands
 
 ```
