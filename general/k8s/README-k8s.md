@@ -34,3 +34,13 @@ kubectl cluster-info
 kubectl config get-contexts
 kubectl config get-contexts | awk '{print $1,$5}'
 ```
+
+- Cleanup
+```
+kubectl delete all --all     
+kubectl delete svc --all
+kubectl delete configmap --all
+kubectl delete secret --all
+kubectl delete pvc --all
+kubectl delete ingress --all
+```
