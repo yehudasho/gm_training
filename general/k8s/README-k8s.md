@@ -1,7 +1,10 @@
 # K8s Lab 01
 https://gitlab.com/sela-kubernetes-workshop/lab-01
 
+## Extra lab - pod + rs + svc
 
+kubectl apply -f my-pod-rs-svc.yaml
+kubectl port-forward svc/example-service 8080:80
 ## K8s Common commands
 
 ```
