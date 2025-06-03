@@ -5,8 +5,7 @@ https://docs.google.com/spreadsheets/d/1RYPJaOKE75J45QOCVvH3WolZlOSEcs8A8Ug0MgAL
 https://gitlab.com/sela-kubernetes-workshop/lab-01
 https://gitlab.com/sela-kubernetes-workshop/lab-04
 
-user: sela
-password: Sela1234!
+
 
 ## Extra lab - pod + rs + svc
 
