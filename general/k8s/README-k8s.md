@@ -1,4 +1,7 @@
 # K8s Lab 01
+list of servers
+https://docs.google.com/spreadsheets/d/1RYPJaOKE75J45QOCVvH3WolZlOSEcs8A8Ug0MgALWgs/edit?gid=0#gid=0
+
 https://gitlab.com/sela-kubernetes-workshop/lab-01
 
 ## Extra lab - pod + rs + svc
