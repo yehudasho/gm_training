@@ -2,6 +2,14 @@
 ## Ubunto Servers
 https://docs.google.com/spreadsheets/d/1gEC6K71ti4ZJCUX1XRYHGUphyPwUVkcoG1rHvfRYR3c/edit?gid=0#gid=0
 
+
+- Cleanup if needed
+
+```
+docker rm -f $(docker ps -a -q)
+docker rmi -f $(docker images -q)
+```
+
 - Jenkins installation via docker
 - Enables Jenkins to use the host's Docker engine by mounting the Docker socket
   - **Docker socket** is Mounting the  in a container means giving the container direct access to the host's Docker engine       this allows the container to run Docker commands
