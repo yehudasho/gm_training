@@ -32,6 +32,18 @@ docker run -d \
 sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword bash
 ```
 
+- Install plugins of docker and stage view
+- Install docker into docker and grant permission to jenkins user 
+```
+docker exec -u 0 -it jenkins bash
+apt update && apt install -y docker.io
+usermod -aG docker jenkins
+docker restart jenkins
+```
+
+- Create Declarative Pipeline job and run it
+  -  pipeline-check-docker and then pipline-Run-Python files
+
 ### Lab-01
 https://gitlab.com/ez-mentor/ez-cooperations/ez-mentor-sela/sela-modern-cI-cd-course-labs/-/blob/master/setup/jenkins-docker-setup.md?ref_type=heads
 
