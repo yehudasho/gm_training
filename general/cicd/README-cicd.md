@@ -2,6 +2,28 @@
 ## Ubunto Servers
 https://docs.google.com/spreadsheets/d/1gEC6K71ti4ZJCUX1XRYHGUphyPwUVkcoG1rHvfRYR3c/edit?gid=0#gid=0
 
+- Jenkins installation via docker
+- Enables Jenkins to use the host's Docker engine by mounting the Docker socket
+  - **Docker socket** is Mounting the  in a container means giving the container direct access to the host's Docker engine       this allows the container to run Docker commands
+     its how the Docker CLI (docker ps, docker run, etc.) communicates with the Docker daemon
+    
+```
+docker run -d \
+  --name jenkins \
+  -u root \
+  -p 8080:8080 \
+  -v jenkins_home:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  --group-add $(getent group docker | cut -d: -f3) \
+  jenkins/jenkins:lts
+```
+
+- Go to the Browser and type the password via user jenkins
+
+```
+sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword bash
+```
+
 ### Lab-01
 https://gitlab.com/ez-mentor/ez-cooperations/ez-mentor-sela/sela-modern-cI-cd-course-labs/-/blob/master/setup/jenkins-docker-setup.md?ref_type=heads
 
