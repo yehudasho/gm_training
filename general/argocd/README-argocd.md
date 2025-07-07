@@ -4,7 +4,7 @@
 ## List of K8s server
 https://docs.google.com/spreadsheets/d/1RYPJaOKE75J45QOCVvH3WolZlOSEcs8A8Ug0MgALWgs/edit?gid=0#gid=0
 ## List of Jenkins Server
-https://docs.google.com/spreadsheets/d/1RYPJaOKE75J45QOCVvH3WolZlOSEcs8A8Ug0MgALWgs/edit?gid=0#gid=0
+https://docs.google.com/spreadsheets/d/1gEC6K71ti4ZJCUX1XRYHGUphyPwUVkcoG1rHvfRYR3c/edit?gid=0#gid=0
 
 # Argo CD - GitOps
 
