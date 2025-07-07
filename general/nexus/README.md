@@ -1,7 +1,7 @@
 # Nexus
 ```
-docker pull sonatype/nexus3
-docker run -d -p 8081:8081 --name nexus sonatype/nexus3
+docker pull sonatype/nexus:latest
+docker run -d -p 8080:8081 --name nexus sonatype/nexus
 Browes to http://localhost:8081
 Login to nexus dashboard
 User: admin
